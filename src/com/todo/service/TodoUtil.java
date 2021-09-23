@@ -13,17 +13,17 @@ public class TodoUtil {
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("\n"
-				+ "========== Create item Section\n"
-				+ "enter the title\n");
+				+ "========== 항목을 만들어 봅시다!\n"
+				+ "제목을 입력해주세요~");
 		
-		title = sc.next();
+		title = sc.nextLine();
 		if (list.isDuplicate(title)) {
-			System.out.printf("title can't be duplicate");
+			System.out.printf("제목은 중복해서 입력하지 말아주세요..");
 			return;
 		}
 		
-		System.out.println("enter the description");
-		desc = sc.next();
+		System.out.println("이 항목에는 어떤 내용을 입력할까요?");
+		desc = sc.nextLine();
 		
 		TodoItem t = new TodoItem(title, desc);
 		list.addItem(t);
@@ -35,8 +35,8 @@ public class TodoUtil {
 		String title = sc.next();
 		
 		System.out.println("\n"
-				+ "========== Delete Item Section\n"
-				+ "enter the title of item to remove\n"
+				+ "========== 항목을 삭제해볼게요!\n"
+				+ "삭제할 항목의 이름을 입력해주세요~\n"
 				+ "\n");
 		
 		for (TodoItem item : l.getList()) {
@@ -53,38 +53,39 @@ public class TodoUtil {
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("\n"
-				+ "========== Edit Item Section\n"
-				+ "enter the title of the item you want to update\n"
+				+ "========== 항목을 수정해볼게요!\n"
+				+ "수정이 필요한 항목의 이름을 입력해주세요!\n"
 				+ "\n");
-		String title = sc.next().trim();
+		String title = sc.nextLine().trim();
 		if (!l.isDuplicate(title)) {
-			System.out.println("title doesn't exist");
+			System.out.println("이제 항목이 존재하지 않을거에요...");
 			return;
 		}
 
-		System.out.println("enter the new title of the item");
-		String new_title = sc.next().trim();
+		System.out.println("새로운 항목의 이름을 입력해주세요!");
+		String new_title = sc.nextLine().trim();
 		if (l.isDuplicate(new_title)) {
-			System.out.println("title can't be duplicate");
+			System.out.println("제목은 중복해서 입력하지 말아주세요..");
 			return;
 		}
 		
-		System.out.println("enter the new description ");
-		String new_description = sc.next().trim();
+		System.out.println("새로운 항목의 내용을 입력해주세요! ");
+		String new_description = sc.nextLine().trim();
 		for (TodoItem item : l.getList()) {
 			if (item.getTitle().equals(title)) {
 				l.deleteItem(item);
 				TodoItem t = new TodoItem(new_title, new_description);
 				l.addItem(t);
-				System.out.println("item updated");
+				System.out.println("항목이 수정되었어요!");
 			}
 		}
 
 	}
 
 	public static void listAll(TodoList l) {
+		System.out.println("<전체 목록을 봅시다!>");
 		for (TodoItem item : l.getList()) {
-			System.out.println("Item Title: " + item.getTitle() + "  Item Description:  " + item.getDesc());
+			System.out.println(item.toSaveString());
 		}
 	}
 }

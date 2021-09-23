@@ -1,5 +1,7 @@
 package com.todo.dao;
 
+//import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class TodoItem {
@@ -34,7 +36,16 @@ public class TodoItem {
         return current_date;
     }
 
-    public void setCurrent_date(Date current_date) {
-        this.current_date = current_date;
+  public String setCurrent_date(Date current_date) {
+       this.current_date = current_date;
+	return "current_date";
+  }
+        
+    //Calendar calendar = Calendar.getInstance();
+    //SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+    
+    public String toSaveString() {
+    	return title+"##"+desc+"## " + current_date+"\n";
     }
+    
 }
