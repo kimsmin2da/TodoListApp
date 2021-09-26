@@ -32,9 +32,7 @@ public class TodoList {
 
 	public void sortByName() {
 		Collections.sort(list, new TodoSortByName());
-
 	}
-
 	
 	public void reverseList() {
 		Collections.reverse(list);
@@ -53,5 +51,15 @@ public class TodoList {
 			if (title.equals(item.getTitle())) return true;
 		}
 		return false;
+	}
+
+	public int getCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public TodoItem getItem(int i) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
